@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "next lint"
   },
   "dependencies": {
     "@studio-freight/react-lenis": "^0.0.47",
@@ -28,5 +28,11 @@
     "eslint-config-next": "16.1.4",
     "tailwindcss": "^4",
     "typescript": "^5"
+  },
+  "overrides": {
+    "@studio-freight/react-lenis": {
+      "react": "$react",
+      "react-dom": "$react-dom"
+    }
   }
 }
