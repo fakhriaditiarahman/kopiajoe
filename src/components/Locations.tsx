@@ -166,7 +166,7 @@ export default function Locations() {
                                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
                                 <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
                             </span>
-                            Radar Lock
+                            Coming Soon
                         </span>
 
                         <div className="h-4 w-[1px] bg-neutral-800" />
