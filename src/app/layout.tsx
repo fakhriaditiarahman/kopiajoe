@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   description: "A premium coffee experience.",
 };
 
-import Preloader from "@/components/Preloader";
+
 
 export default function RootLayout({
   children,
@@ -24,7 +24,6 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${outfit.variable} antialiased bg-black text-white`}>
         <SmoothScroll>
-          <Preloader />
           {children}
         </SmoothScroll>
       </body>

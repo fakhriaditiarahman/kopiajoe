@@ -3,25 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-export default function Preloader() {
-    const [loading, setLoading] = useState(true);
-    const [progress, setProgress] = useState(0);
-
-    useEffect(() => {
-        const timer = setInterval(() => {
-            setProgress((prev) => {
-                if (prev >= 100) {
-                    clearInterval(timer);
-                    setTimeout(() => setLoading(false), 500); // Small delay at 100%
-                    return 100;
-                }
-                return prev + Math.floor(Math.random() * 10) + 1;
-            });
-        }, 150);
-
-        return () => clearInterval(timer);
-    }, []);
-
+export default function Preloader({ progress, loading }: { progress: number; loading: boolean }) {
     return (
         <AnimatePresence>
             {loading && (
@@ -33,7 +15,7 @@ export default function Preloader() {
                 >
                     <div className="flex flex-col items-center">
                         <div className="text-8xl md:text-[12rem] font-bold tracking-tighter">
-                            {progress}%
+                            {Math.round(progress)}%
                         </div>
                         <div className="uppercase tracking-widest mt-4 text-neutral-500">
                             Brewing Experience

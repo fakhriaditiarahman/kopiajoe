@@ -4,6 +4,10 @@ import Navbar from "@/components/Navbar";
 import About from "@/components/About";
 import BentoGrid from "@/components/BentoGrid";
 import Stats from "@/components/Stats";
+import Locations from "@/components/Locations";
+import ProductShowcase from "@/components/ProductShowcase";
+import RealWorldExperience from "@/components/RealWorldExperience";
+import ModelShowcase from "@/components/ModelShowcase";
 import Testimonials from "@/components/Testimonials";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
@@ -21,6 +25,10 @@ export default function Home() {
         <About />
         <BentoGrid />
         <Stats />
+        <Locations />
+        <ProductShowcase />
+        <RealWorldExperience />
+        <ModelShowcase />
         <Testimonials />
         <CTA />
         <Footer />

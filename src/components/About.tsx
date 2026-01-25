@@ -4,7 +4,7 @@ import { useScroll, useTransform, motion, MotionValue } from "framer-motion";
 import { useRef } from "react";
 import { cn } from "@/lib/utils";
 
-const content = "Di Kopi Ajoe, kopi lebih dari sekadar minuman—ia adalah sebuah ritual. Lahir dari seleksi biji terbaik dan disangrai dengan presisi penuh jiwa, setiap butir menceritakan kisah tentang dedikasi, keanggunan, dan pencarian tanpa henti akan kesempurnaan rasa.";
+const content = "Didirikan oleh Dede Saputra, Kopi Ajoe bermula dari mimpi sederhana untuk menghidupkan ekonomi kreatif. Kini, dengan ratusan armada sepeda listrik dan dukungan penuh petani lokal Sumatera Barat, kami mengolah kopi dari hulu hingga hilir. Setiap cangkir adalah buah kolaborasi yang memberdayakan, menyatukan kualitas rasa dengan misi sosial yang nyata.";
 
 const Word = ({ children, range, progress }: { children: string; range: [number, number]; progress: MotionValue<number> }) => {
     const opacity = useTransform(progress, range, [0.1, 1]);
