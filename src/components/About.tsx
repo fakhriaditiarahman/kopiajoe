@@ -15,6 +15,8 @@ const Word = ({ children, range, progress }: { children: string; range: [number,
     );
 };
 
+import Background3D from "./Background3D";
+
 export default function About() {
     const container = useRef(null);
     const { scrollYProgress } = useScroll({
@@ -25,8 +27,9 @@ export default function About() {
     const words = content.split(" ");
 
     return (
-        <section ref={container} className="min-h-screen bg-black text-white flex items-center justify-center px-6 md:px-20 py-24">
-            <div className="max-w-4xl text-3xl md:text-5xl lg:text-6xl font-bold leading-[1.2] flex flex-wrap justify-center text-center">
+        <section ref={container} className="relative min-h-screen bg-black text-white flex items-center justify-center px-6 md:px-20 py-24 overflow-hidden">
+            <Background3D />
+            <div className="relative z-10 max-w-4xl text-3xl md:text-5xl lg:text-6xl font-bold leading-[1.2] flex flex-wrap justify-center text-center">
                 {words.map((word, i) => {
                     const start = i / words.length;
                     const end = start + (1 / words.length);

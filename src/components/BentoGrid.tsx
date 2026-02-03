@@ -40,7 +40,7 @@ export default function BentoGrid() {
     return (
         <section className="min-h-screen bg-black text-white px-6 md:px-20 py-24 flex flex-col justify-center">
             <div className="mb-16">
-                <h2 className="text-4xl md:text-6xl font-bold uppercase tracking-tighter">Our Craft</h2>
+                <h2 className="text-4xl md:text-6xl font-bold uppercase tracking-tighter">Our Signature</h2>
             </div>
 
             <div className="grid grid-cols-12 gap-4 max-w-7xl mx-auto w-full">

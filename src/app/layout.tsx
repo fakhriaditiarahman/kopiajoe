@@ -11,6 +11,11 @@ const outfit = Outfit({
 export const metadata: Metadata = {
   title: "KOPI AJOE",
   description: "A premium coffee experience.",
+  icons: {
+    icon: "/images/favicon_large.png?v=2",
+    shortcut: "/images/favicon_large.png?v=2",
+    apple: "/images/favicon_large.png?v=2",
+  },
 };
 
 
