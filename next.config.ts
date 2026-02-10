@@ -16,6 +16,7 @@ const cspHeader = `
 `;
 
 const nextConfig: NextConfig = {
+  poweredByHeader: false,
   async headers() {
     return [
       {
@@ -43,7 +44,7 @@ const nextConfig: NextConfig = {
           },
           {
             key: 'Permissions-Policy',
-            value: 'camera=(), microphone=(), geolocation=(), browsing-topics=()'
+            value: 'camera=(), microphone=(), geolocation=(), browsing-topics=(), payment=(), usb=(), magnetometer=(), accelerometer=(), gyroscope=(), display-capture=()'
           },
           {
             key: 'X-XSS-Protection',
