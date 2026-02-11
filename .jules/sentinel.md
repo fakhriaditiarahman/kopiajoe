@@ -9,3 +9,8 @@
 **Vulnerability:** The static Content Security Policy included `unsafe-eval` unconditionally, exposing the application to potential XSS/RCE risks in production.
 **Learning:** `unsafe-eval` is often required for development tools (like HMR) but dangerous in production. Next.js `next.config.ts` allows dynamic configuration based on `process.env.NODE_ENV`.
 **Prevention:** Use `process.env.NODE_ENV` to conditionally include development-only CSP directives like `unsafe-eval`.
+
+## 2026-02-11 - Permissions Policy Hardening
+**Vulnerability:** The `Permissions-Policy` header was overly permissive, only restricting a few features (`camera`, `microphone`, etc.) while leaving others potentially enabled by default or for cross-origin iframes.
+**Learning:** `Permissions-Policy` (formerly Feature Policy) allows site owners to enable or disable powerful browser features. Explicitly disabling unused features like `payment`, `usb`, and `magnetometer` reduces the attack surface and potential for abuse if a component is compromised or via third-party scripts.
+**Prevention:** Regularly audit and expand the `Permissions-Policy` header to explicitly deny all features that are not strictly required by the application.
