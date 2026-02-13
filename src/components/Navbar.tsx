@@ -79,9 +79,9 @@ export default function Navbar() {
                                 <p>Designed by Faker</p>
                             </div>
                             <div className="flex gap-6">
-                                <a href="#" className="hover:opacity-50 transition-opacity">Instagram</a>
-                                <a href="#" className="hover:opacity-50 transition-opacity">Twitter</a>
-                                <a href="#" className="hover:opacity-50 transition-opacity">LinkedIn</a>
+                                <a href="#" target="_blank" rel="noopener noreferrer" className="hover:opacity-50 transition-opacity">Instagram</a>
+                                <a href="#" target="_blank" rel="noopener noreferrer" className="hover:opacity-50 transition-opacity">Twitter</a>
+                                <a href="#" target="_blank" rel="noopener noreferrer" className="hover:opacity-50 transition-opacity">LinkedIn</a>
                             </div>
                         </div>
                     </motion.div>
