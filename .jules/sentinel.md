@@ -14,3 +14,8 @@
 **Vulnerability:** The `Permissions-Policy` header was overly permissive, only restricting a few features (`camera`, `microphone`, etc.) while leaving others potentially enabled by default or for cross-origin iframes.
 **Learning:** `Permissions-Policy` (formerly Feature Policy) allows site owners to enable or disable powerful browser features. Explicitly disabling unused features like `payment`, `usb`, and `magnetometer` reduces the attack surface and potential for abuse if a component is compromised or via third-party scripts.
 **Prevention:** Regularly audit and expand the `Permissions-Policy` header to explicitly deny all features that are not strictly required by the application.
+
+## 2026-03-02 - Cross-Origin Isolation Headers
+**Vulnerability:** The application was missing `Cross-Origin-Opener-Policy` (COOP) and `Cross-Origin-Resource-Policy` (CORP) headers, potentially exposing it to cross-window attacks (like Spectre) and resource leaks.
+**Learning:** `COOP: same-origin` is the most secure but breaks OAuth popups. `same-origin-allow-popups` is a safer default that preserves popup functionality while still isolating the document. `CORP: same-origin` prevents other origins from embedding resources, reducing the risk of data leaks.
+**Prevention:** Always implement `COOP` and `CORP` headers in `next.config.ts` to harden the application against cross-origin attacks.
