@@ -19,3 +19,13 @@
 **Vulnerability:** The application was missing `Cross-Origin-Opener-Policy` (COOP) and `Cross-Origin-Resource-Policy` (CORP) headers, potentially exposing it to cross-window attacks (like Spectre) and resource leaks.
 **Learning:** `COOP: same-origin` is the most secure but breaks OAuth popups. `same-origin-allow-popups` is a safer default that preserves popup functionality while still isolating the document. `CORP: same-origin` prevents other origins from embedding resources, reducing the risk of data leaks.
 **Prevention:** Always implement `COOP` and `CORP` headers in `next.config.ts` to harden the application against cross-origin attacks.
+
+## 2026-02-17 - Next.js App Router Middleware & Server Actions
+**Vulnerability:** A middleware was added to restrict HTTP methods to GET and HEAD on all page routes, assuming a static site.
+**Learning:** Next.js App Router Server Actions rely on `POST` requests to the current page URL. Blocking `POST` in middleware breaks all Server Actions and potentially other Next.js internal mechanisms (like revalidation) that use POST, even if no explicit API routes exist.
+**Prevention:** Avoid blanket blocking of POST requests in middleware for Next.js applications unless you explicitly exclude Server Action paths or handle them correctly. Instead, rely on Next.js's built-in routing or use more targeted restrictions.
+
+## 2026-02-17 - DNS Prefetch Control for Privacy
+**Vulnerability:** The application had `X-DNS-Prefetch-Control` set to `on` (default), potentially allowing browsers to leak user intent via proactive DNS lookups.
+**Learning:** While DNS prefetching improves performance, it can leak information about user browsing habits and open up timing side-channels. For strict privacy, explicit control is needed.
+**Prevention:** Set `X-DNS-Prefetch-Control: off` in `next.config.ts` to disable proactive DNS resolution and prioritize user privacy.
