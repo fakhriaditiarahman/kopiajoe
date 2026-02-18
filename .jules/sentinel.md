@@ -29,3 +29,8 @@
 **Vulnerability:** The application had `X-DNS-Prefetch-Control` set to `on` (default), potentially allowing browsers to leak user intent via proactive DNS lookups.
 **Learning:** While DNS prefetching improves performance, it can leak information about user browsing habits and open up timing side-channels. For strict privacy, explicit control is needed.
 **Prevention:** Set `X-DNS-Prefetch-Control: off` in `next.config.ts` to disable proactive DNS resolution and prioritize user privacy.
+
+## 2026-04-01 - CSP with Next.js Proxy (formerly Middleware)
+**Vulnerability:** The static CSP in `next.config.ts` relied on `'unsafe-inline'` for scripts, exposing the app to XSS risks.
+**Learning:** To implement a strict CSP with nonce support for App Router, we must use Edge Middleware (now renamed to `proxy` in Next.js 16+). The `middleware.ts` file convention is deprecated in favor of `proxy.ts`, and the export must be named `proxy`.
+**Prevention:** Use `src/proxy.ts` to generate nonces and set dynamic CSP headers, allowing the removal of `'unsafe-inline'` from `script-src`. Ensure `style-src` retains `'unsafe-inline'` if using libraries like Framer Motion that inject styles at runtime.

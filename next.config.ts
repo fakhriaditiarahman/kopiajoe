@@ -1,20 +1,5 @@
 import type { NextConfig } from "next";
 
-const isDev = process.env.NODE_ENV === "development";
-
-const cspHeader = `
-    default-src 'self';
-    script-src 'self' ${isDev ? "'unsafe-eval'" : ""} 'unsafe-inline';
-    style-src 'self' 'unsafe-inline';
-    img-src 'self' data:;
-    font-src 'self';
-    object-src 'none';
-    base-uri 'self';
-    form-action 'self';
-    frame-ancestors 'none';
-    upgrade-insecure-requests;
-`;
-
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   async headers() {
@@ -61,10 +46,6 @@ const nextConfig: NextConfig = {
           {
             key: 'X-Permitted-Cross-Domain-Policies',
             value: 'none'
-          },
-          {
-            key: 'Content-Security-Policy',
-            value: cspHeader.replace(/\n/g, '')
           }
         ]
       }
