@@ -7,13 +7,11 @@ export function proxy(request: NextRequest) {
 
   // Script-src:
   // - 'self': Allows loading scripts from the same origin
-  // - 'nonce-...': Allows inline scripts with the correct nonce
-  // - 'strict-dynamic': Allows scripts loaded by a trusted script to load other scripts (ignored by older browsers)
+  // - 'unsafe-inline': Allows inline scripts (needed for Next.js)
   // - 'unsafe-eval': Only in development for Hot Module Replacement
   const scriptSrc = [
     "'self'",
-    `'nonce-${nonce}'`,
-    "'strict-dynamic'",
+    "'unsafe-inline'",
     process.env.NODE_ENV === 'development' ? "'unsafe-eval'" : ""
   ].filter(Boolean).join(' ')
 
