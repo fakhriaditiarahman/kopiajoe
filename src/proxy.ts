@@ -6,11 +6,15 @@ export function proxy(request: NextRequest) {
   const nonce = crypto.randomUUID()
 
   // Script-src:
-  // - 'self': Allows loading scripts from the same origin
-  // - 'unsafe-inline': Allows inline scripts (needed for Next.js)
+  // - 'self': Fallback for older browsers
+  // - 'nonce-...': Allows specific scripts with correct nonce
+  // - 'strict-dynamic': Trusts scripts loaded by trusted scripts (Next.js)
+  // - 'unsafe-inline': Fallback for older browsers (ignored by modern ones due to strict-dynamic)
   // - 'unsafe-eval': Only in development for Hot Module Replacement
   const scriptSrc = [
     "'self'",
+    `'nonce-${nonce}'`,
+    "'strict-dynamic'",
     "'unsafe-inline'",
     process.env.NODE_ENV === 'development' ? "'unsafe-eval'" : ""
   ].filter(Boolean).join(' ')
