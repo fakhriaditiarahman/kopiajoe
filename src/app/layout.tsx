@@ -3,6 +3,9 @@ import { Outfit } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
 
+// Force dynamic rendering to ensure a fresh nonce is generated for every request
+export const dynamic = "force-dynamic";
+
 const outfit = Outfit({
   variable: "--font-outfit",
   subsets: ["latin"],
