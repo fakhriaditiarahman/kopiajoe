@@ -12,7 +12,9 @@ export function proxy(request: NextRequest) {
   const scriptSrc = [
     "'self'",
     "'unsafe-inline'",
-    process.env.NODE_ENV === 'development' ? "'unsafe-eval'" : ""
+    (process.env.NODE_ENV === 'development' ? "'unsafe-eval'" : ""),
+    `'nonce-${nonce}'`,
+    "'strict-dynamic'"
   ].filter(Boolean).join(' ')
 
   const cspHeader = `
