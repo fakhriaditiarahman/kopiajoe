@@ -11,6 +11,8 @@ export function proxy(request: NextRequest) {
   // - 'unsafe-eval': Only in development for Hot Module Replacement
   const scriptSrc = [
     "'self'",
+    `'nonce-${nonce}'`,
+    "'strict-dynamic'",
     "'unsafe-inline'",
     process.env.NODE_ENV === 'development' ? "'unsafe-eval'" : ""
   ].filter(Boolean).join(' ')

@@ -34,3 +34,8 @@
 **Vulnerability:** The static CSP in `next.config.ts` relied on `'unsafe-inline'` for scripts, exposing the app to XSS risks.
 **Learning:** To implement a strict CSP with nonce support for App Router, we must use Edge Middleware (now renamed to `proxy` in Next.js 16+). The `middleware.ts` file convention is deprecated in favor of `proxy.ts`, and the export must be named `proxy`.
 **Prevention:** Use `src/proxy.ts` to generate nonces and set dynamic CSP headers, allowing the removal of `'unsafe-inline'` from `script-src`. Ensure `style-src` retains `'unsafe-inline'` if using libraries like Framer Motion that inject styles at runtime.
+
+## 2026-02-20 - Strict CSP Implementation in Next.js Middleware
+**Vulnerability:** The application had a `src/proxy.ts` file intended for CSP, but it explicitly allowed `'unsafe-inline'` in `script-src` and failed to utilize the generated nonce, effectively bypassing XSS protections.
+**Learning:** Merely generating a nonce in middleware is insufficient; it must be explicitly added to the `script-src` directive (e.g., `'nonce-${nonce}'`) and passed to Next.js via request headers (`x-nonce`) for internal scripts to pick it up. Modern browsers ignore `'unsafe-inline'` when a nonce or `'strict-dynamic'` is present.
+**Prevention:** Construct the `script-src` directive dynamically in `src/proxy.ts` to include `'nonce-${nonce}'` and `'strict-dynamic'`, ensuring robust XSS protection while maintaining backward compatibility.
